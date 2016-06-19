@@ -66,7 +66,7 @@ The following are instructions for creating properly referenced papers.
 
 ### Formating Your Markdown
 
-[This is a link to example Markdown](https://daringfireball.net/projects/markdown/).
+Follow the [Markdown](https://daringfireball.net/projects/markdown/) guide.
 
 ### References
 
@@ -80,7 +80,13 @@ Images should be refenced this way: `![Image](images/image.jpg "Image")`
 
 ### Outputting the Paper
 
-Providing all the dependencies have been satisfied, then calling the script this way: `bin/pandoc-build.sh /your/paper-dir/your-paper.md paper`, should produce a properly referenced paper, from the markdown source, called `../build/paper/your-paper/your-paper.pdf`. 
+Providing all the dependencies have been satisfied, then call the script this way: 
+
+`bin/pandoc-build.sh /your/paper-dir/your-paper.md paper`
+
+That should produce a properly referenced paper, from the markdown source, called:
+
+`../build/paper/your-paper/your-paper.pdf`
 
 ## Creating Presentations
 
@@ -88,7 +94,7 @@ The following are instructions for creating presentations.
 
 ### Formating Your Markdown
 
-[This is a link to example Markdown](https://daringfireball.net/projects/markdown/). Below is an example that you could copy and paste and then work out what it does (you will need to copy an image to `/your/presentation-dir/images/an_image.png`):
+Follow the [Markdown](https://daringfireball.net/projects/markdown/) guide. Below is an example that you could copy and paste and then work out what it does (you will need to copy an image to `/your/presentation-dir/images/an_image.png`):
 
     # Title
 
@@ -164,7 +170,15 @@ Images should be refenced this way: `![](images/image.png)`
 
 ### Outputting the Presentation
 
-Providing all the dependencies have been satisfied, then calling the script this way: `bin/pandoc-build.sh /your/presentation-dir/your-presentation.md presentation`, should produce a presentation, from the markdown source, called `../build/presentation/your-presentation/index.html`. You should also find the directory `../build/presentation/your-presentation/reveal.js`
+Providing all the dependencies have been satisfied, then calling the script this way:
+
+`bin/pandoc-build.sh /your/presentation-dir/your-presentation.md presentation`
+
+That should produce a presentation, from the markdown source, called: 
+
+`../build/presentation/your-presentation/index.html`
+
+You should also find the directory `../build/presentation/your-presentation/reveal.js`
 
 ### Running the Presentation
 
