@@ -2,7 +2,7 @@
 
 This is home to a small script, [pandoc-build.sh](bin/pandoc-build.sh), which can build [properly referenced pdfs](https://github.com/glowkeeper/Markdown-with-References) and/or presentations from source Markdown. 
 
-To use [pandoc-build.sh](bin/pandoc-build.sh), clone this repository onto a Mac (it probably works on 'nix's too, but I've not verified that) then follow the instructions below.
+To use [pandoc-build.sh](bin/pandoc-build.sh), clone this repository onto a Mac (it probably works on 'nix's too, but I've not verified that) and follow the instructions below.
 
 ## Disclaimer
 
