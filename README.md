@@ -1,6 +1,6 @@
 # pandoc-build.sh
 
-This is home to a small script, [pandoc-build.sh](bin/pandoc-build.sh), which can build [properly referenced pdfs](https://github.com/glowkeeper/Markdown-with-References) and/or presentations from source Markdown. 
+This is home to a small script, [pandoc-build.sh](bin/pandoc-build.sh), which can build [properly referenced pdfs](https://github.com/glowkeeper/Markdown-with-References) and/or presentations from source [Markdown](https://daringfireball.net/projects/markdown/). 
 
 To use [pandoc-build.sh](bin/pandoc-build.sh), clone this repository onto a Mac (it probably works on 'nix's too, but I've not verified that) and follow the instructions below.
 
@@ -43,8 +43,6 @@ header-includes:<br>
     - \renewcommand{\footrulewidth}{0.4pt}<br>
 ---<br>
 
-+ In your source Markdown, images should be refenced this way: `![Image](images/image.jpg "Image")`
-
 ### Presentation Dependencies
 
 You'll need:
@@ -58,17 +56,113 @@ You'll need:
 	  .reveal p { font-size: 1.1em; }
 	</style>
 
-+ In your source Markdown, images should be refenced this way: `![](images/image.png)`
-
 ### Modify your PATH Variable
 
 The pandoc and LaTex must be in your your `$PATH`; e.g `export PATH=$PATH:/usr/local/bin:/usr/texbin`.
 
 ## Creating PDF's
 
+The following are instructions for creating properly referenced papers.
+
+### Formating Your Markdown
+
+[This is a link to example Markdown](https://daringfireball.net/projects/markdown/).
+
+### References
+
+References should be of the form `@bibtex_citation_key`, e.g:
+
+_Here's the terrifying truth: there are already enough known fossil fuel reserves to fry Planet Earth five times over @bill_mckibben_global_2012._
+
+### Images
+
+Images should be refenced this way: `![Image](images/image.jpg "Image")`
+
+### Outputting the Paper
+
 Providing all the dependencies have been satisfied, then calling the script this way: `bin/pandoc-build.sh /your/paper-dir/your-paper.md paper`, should produce a properly referenced paper, from the markdown source, called `../build/paper/your-paper/your-paper.pdf`. 
 
 ## Creating Presentations
+
+The following are instructions for creating presentations.
+
+### Formating Your Markdown
+
+[This is a link to example Markdown](https://daringfireball.net/projects/markdown/). Below is an example that you could copy and paste and then work out what it does (you will need to copy an image to `/your/presentation-dir/images/an_image.png`):
+
+    # Title
+
+    by You
+
+    ![](images/an_image.png)
+
+    _Source: a reference_
+
+    - - -
+
+    # Section 1
+
+    ![](images/an_image.png)
+
+    _Source: a reference_
+
+    - - -
+
+    ## Section 1.1
+
+    > + Text point 1
+    > + Text point 2
+    > + Text point 3
+
+    ## Section 1.2
+
+    _"Any tool should be useful in the expected way, but a truly great tool lends itself to uses you never expected."_
+
+    _Eric S. Raymond: The Cathedral and the Bazaar_
+
+    # Section 2
+
+    ![](images/an_image.png)
+
+    _Source: a reference_
+
+    - - -
+
+    ## Section 2.1
+
+    Some text
+
+    . . .
+
+    Some more text.
+
+    . . .
+
+    Yet more text.
+
+    ## Section 2.2
+
+    An ordinary numbered list:
+
+    1. Point 1
+    2. Point 2
+    3. Point 3
+
+    # Section 3
+
+    ![](images/an_image.png)
+
+    _Source: a reference_
+
+    - - -
+
+    # Thank You
+
+### Images
+
+Images should be refenced this way: `![](images/image.png)`
+
+### Outputting the Presentation
 
 Providing all the dependencies have been satisfied, then calling the script this way: `bin/pandoc-build.sh /your/presentation-dir/your-presentation.md presentation`, should produce a presentation, from the markdown source, called `../build/presentation/your-presentation/index.html`. You should also find the directory `../build/presentation/your-presentation/reveal.js`
 
