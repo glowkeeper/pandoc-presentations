@@ -4,6 +4,10 @@ This is home to a small script, [pandoc-build.sh](bin/pandoc-build.sh), that can
 
 To use [pandoc-build.sh](bin/pandoc-build.sh), clone this repository onto a Mac (it probably works on 'nix's too, but I've not verified that) then follow the instructions below.
 
+## Warning
+
+This software is provided as-is. It is not military grade and if it works out of the box, well, that's remarkable :) However, I hope it serves as a good example of the use of [pandoc](https://github.com/jgm/pandoc/releases/download/1.17.0.2/).
+
 ## Dependencies
 
 Ensure the following dependencies are met.
@@ -19,9 +23,27 @@ You'll need the following software:
 
 The paper relies on BibTex references. Hence, you'll need:
 
-+ A reference manager that can output [BibTeX](http://www.bibtex.org/). I use [Zotero](https://www.zotero.org/). It works best with [Firefox](https://www.mozilla.org/en-GB/firefox/new/) and [Firefox's Zotero plugin](https://download.zotero.org/extension/zotero-4.0.29.10.xpi). Additionally, I use Zotero's [Better BibText](https://github.com/retorquere/zotero-better-bibtex) plugin, primarily because that helps avoid citation key clashes. 
-+ A [Citation Style Language](http://citationstyles.org/) (CSL) file that matches the citation style you need. The [Zotero Style Repository](https://www.zotero.org/styles) has many such files. I often have to produce IEEE citations, for which I use the file [IEEE with URL](https://www.zotero.org/styles/ieee-with-url).
-+ Images should be refenced this way in your Markdown: `![Image](images/image.jpg "Image")`
++ A reference manager that can output [BibTeX](http://www.bibtex.org/). I use [Zotero](https://www.zotero.org/). It works best with [Firefox](https://www.mozilla.org/en-GB/firefox/new/) and [Firefox's Zotero plugin](https://download.zotero.org/extension/zotero-4.0.29.10.xpi). Additionally, I use Zotero's [Better BibText](https://github.com/retorquere/zotero-better-bibtex) plugin, primarily because that helps avoid citation key clashes. The BibTex should be exported to `/your/paper-dir/bibliography/library.bib`.
++ A [Citation Style Language](http://citationstyles.org/) (CSL) file that matches the citation style you need. The [Zotero Style Repository](https://www.zotero.org/styles) has many such files. I often have to produce IEEE citations, for which I use the file [IEEE with URL](https://www.zotero.org/styles/ieee-with-url). The CSL file should be saved to ``/your/paper-dir/bibliography/ieee-with-url.csl`.
++ Create a _meta file_, `/your/paper-dir/meta.txt`, that contains your paper's title, the author(s), the header and the footer. Here's an example _meta.txt_:
+
+---<br>
+title: Paper Title<br>
+author: Your Name<br>
+header-includes:<br>
+    - \usepackage{fancyhdr}<br>
+    - \pagestyle{fancy}<br>
+    - \lhead{\thepage}<br>
+    - \chead{}<br>
+    - \rhead{}<br>
+    - \lfoot{© Your Name}<br>
+    - \cfoot{}<br>
+    - \rfoot{}<br>
+    - \renewcommand{\headrulewidth}{0.4pt}<br>
+    - \renewcommand{\footrulewidth}{0.4pt}<br>
+---<br>
+
++ In your source Markdown, images should be refenced this way: `![Image](images/image.jpg "Image")`
 
 ### Presentation Dependencies
 
@@ -36,7 +58,7 @@ You'll need:
 	  .reveal p { font-size: 1.1em; }<br>
 	</style><br>
 
-+ Images should be refenced this way in your Markdown: `![](images/image.png)`
++ In your source Markdown, images should be refenced this way: `![](images/image.png)`
 
 ### Modify your PATH Variable
 
