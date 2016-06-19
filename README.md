@@ -50,11 +50,11 @@ You'll need:
 + [reveal.js](https://github.com/hakimel/reveal.js/)
 + A CSS file for styling your presentation. e.g:
 
-	<style type="text/css">
-	  .reveal .slides { margin-top: 40px; }
-	  .reveal .slides li { font-size: 1.1em; }
-	  .reveal p { font-size: 1.1em; }
-	</style>
+    	<style type="text/css">
+    	  .reveal .slides { margin-top: 40px; }
+    	  .reveal .slides li { font-size: 1.1em; }
+    	  .reveal p { font-size: 1.1em; }
+    	</style>
 
 ### Modify your PATH Variable
 
