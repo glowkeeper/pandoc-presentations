@@ -74,7 +74,7 @@ References should be of the form `@bibtex_citation_key`, e.g:
 
 _Here's the terrifying truth: there are already enough known fossil fuel reserves to fry Planet Earth five times over @bill_mckibben_global_2012._
 
-[properly referenced pdfs](https://github.com/glowkeeper/Markdown-with-References)
+Here's a more in depth guide to producing [properly referenced pdfs](https://github.com/glowkeeper/Markdown-with-References).
 
 ### Images
 
