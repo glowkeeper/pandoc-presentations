@@ -27,21 +27,21 @@ The paper relies on BibTex references. Hence, you'll need:
 + A [Citation Style Language](http://citationstyles.org/) (CSL) file that matches the citation style you need. The [Zotero Style Repository](https://www.zotero.org/styles) has many such files. I often have to produce IEEE citations, for which I use the file [IEEE with URL](https://www.zotero.org/styles/ieee-with-url). The CSL file should be saved to `/your/paper-dir/bibliography/ieee-with-url.csl`
 + Create the meta file `/your/paper-dir/meta.txt`, which contains your paper's title, the author(s), the header and the footer. Here's an example _meta.txt_:
 
-        ---<br>
-        title: Paper Title<br>
-        author: Your Name<br>
-        header-includes:<br>
-            - \usepackage{fancyhdr}<br>
-            - \pagestyle{fancy}<br>
-            - \lhead{\thepage}<br>
-            - \chead{}<br>
-            - \rhead{}<br>
-            - \lfoot{© Your Name}<br>
-            - \cfoot{}<br>
-            - \rfoot{}<br>
-            - \renewcommand{\headrulewidth}{0.4pt}<br>
-            - \renewcommand{\footrulewidth}{0.4pt}<br>
-        ---<br>
+        ---
+        title: Paper Title
+        author: Your Name
+        header-includes:
+            - \usepackage{fancyhdr}
+            - \pagestyle{fancy}
+            - \lhead{\thepage}
+            - \chead{}
+            - \rhead{}
+            - \lfoot{© Your Name}
+            - \cfoot{}
+            - \rfoot{}
+            - \renewcommand{\headrulewidth}{0.4pt}
+            - \renewcommand{\footrulewidth}{0.4pt}
+        ---
 
 ### Presentation Dependencies
 
