@@ -1,4 +1,4 @@
-# pandoc-build.sh
+# A Pandoc Script to Build Referenced Papers and Presentations from Markdown
 
 This is home to a small script, [pandoc-build.sh](bin/pandoc-build.sh), which can build [properly referenced pdfs](https://github.com/glowkeeper/Markdown-with-References) and/or presentations from source [Markdown](https://daringfireball.net/projects/markdown/). 
 
