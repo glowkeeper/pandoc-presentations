@@ -24,8 +24,8 @@ You'll need the following software:
 The paper relies on BibTex references. Hence, you'll need:
 
 + A reference manager that can output [BibTeX](http://www.bibtex.org/). I use [Zotero](https://www.zotero.org/), which works best with [Firefox](https://www.mozilla.org/en-GB/firefox/new/) and [Firefox's Zotero plugin](https://download.zotero.org/extension/zotero-4.0.29.10.xpi). Additionally, I use Zotero's [Better BibText](https://github.com/retorquere/zotero-better-bibtex) plugin, primarily because that helps avoid citation key clashes. The BibTex should be exported to `/your/paper-dir/bibliography/library.bib`
-+ A [Citation Style Language](http://citationstyles.org/) (CSL) file that matches the citation style you need. The [Zotero Style Repository](https://www.zotero.org/styles) has many such files. I often have to produce IEEE citations, for which I use the file [IEEE with URL](https://www.zotero.org/styles/ieee-with-url). The CSL file should be saved to ``/your/paper-dir/bibliography/ieee-with-url.csl`
-+ Create a _meta file_, `/your/paper-dir/meta.txt`, that contains your paper's title, the author(s), the header and the footer. Here's an example _meta.txt_:
++ A [Citation Style Language](http://citationstyles.org/) (CSL) file that matches the citation style you need. The [Zotero Style Repository](https://www.zotero.org/styles) has many such files. I often have to produce IEEE citations, for which I use the file [IEEE with URL](https://www.zotero.org/styles/ieee-with-url). The CSL file should be saved to `/your/paper-dir/bibliography/ieee-with-url.csl`
++ Create the meta file `/your/paper-dir/meta.txt`, which contains your paper's title, the author(s), the header and the footer. Here's an example _meta.txt_:
 
 ---<br>
 title: Paper Title<br>
@@ -52,11 +52,11 @@ You'll need:
 + [reveal.js](https://github.com/hakimel/reveal.js/)
 + A CSS file for styling your presentation. e.g:
 
-	<style type="text/css"><br>
-	  .reveal .slides { margin-top: 40px; }<br>
-	  .reveal .slides li { font-size: 1.1em; }<br>
-	  .reveal p { font-size: 1.1em; }<br>
-	</style><br>
+	<style type="text/css">
+	  .reveal .slides { margin-top: 40px; }
+	  .reveal .slides li { font-size: 1.1em; }
+	  .reveal p { font-size: 1.1em; }
+	</style>
 
 + In your source Markdown, images should be refenced this way: `![](images/image.png)`
 
@@ -66,15 +66,15 @@ The pandoc and LaTex must be in your your `$PATH`; e.g `export PATH=$PATH:/usr/l
 
 ## Creating PDF's
 
-Providing all the dependencies have been satisfied, the script `bin/pandoc-build.sh /your/paper-dir/your-paper.md paper` will produce a properly referenced paper, from the markdown source, called `../build/paper/your-paper/your-paper.pdf`. 
+Providing all the dependencies have been satisfied, then calling the script this way: `bin/pandoc-build.sh /your/paper-dir/your-paper.md paper`, should produce a properly referenced paper, from the markdown source, called `../build/paper/your-paper/your-paper.pdf`. 
 
 ## Creating Presentations
 
-Providing all the dependencies have been satisfied, the script `bin/pandoc-build.sh /your/presentation-dir/your-presentation.md presentation` will produce a presentation, from the markdown source, called `../build/presentation/your-presentation/index.html`. You should also find the directory `../build/presentation/your-presentation/reveal.js`
+Providing all the dependencies have been satisfied, then calling the script this way: `bin/pandoc-build.sh /your/presentation-dir/your-presentation.md presentation`, should produce a presentation, from the markdown source, called `../build/presentation/your-presentation/index.html`. You should also find the directory `../build/presentation/your-presentation/reveal.js`
 
 ### Running the Presentation
 
-The easiest way is to load the file `build/presentation/bitcoin/index.html` into a Chrome browser.
+The easiest way is to load the file `build/presentation/your-presentation/index.html` into a Chrome browser.
 
 However, if you want speaker notes, then you need to run the local reveal.js webserver. To do so:
 
