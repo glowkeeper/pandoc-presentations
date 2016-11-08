@@ -47,7 +47,7 @@ function install_paper {
 	src_csl="bibliography/ieee-with-url.csl"
 
 	target_dir="${this_dir}/build/paper/${target_name}"
-	target_paper="${target_dir}/${target_name}.pdf"
+	target_paper="${target_dir}/${target_name}.docx"
 
 	
 	if [ ! -f "${src_biblio}" ]
