@@ -2,7 +2,7 @@
 title: A Pandoc Script That Produces Beautiful Documents and Presentations from Markdown
 ---
 
-This is home to a small script, [pandoc-build.sh](bin/pandoc-build.sh), which can build [properly referenced pdfs](https://github.com/glowkeeper/Markdown-with-References) and/or presentations from source [Markdown](https://daringfireball.net/projects/markdown/).
+This is home to a small script, [pandoc-build.sh](bin/pandoc-build.sh), which can build [properly referenced pdfs](https://glowkeeper.github.io/Markdown-with-References/) and/or presentations from source [Markdown](https://daringfireball.net/projects/markdown/).
 
 To use [pandoc-build.sh](bin/pandoc-build.sh), [clone this repository](https://github.com/glowkeeper/pandoc-presentations/) onto a Mac (it probably works on 'nix's too, but I've not verified that) and follow the instructions below.
 
