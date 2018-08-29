@@ -1,0 +1,11 @@
+# Sample Authors
+# Remove file or replace with your own
+
+steven_huckle:
+  name: Steven Huckle
+  picture:
+  twitter: "@stevehuckle"
+  links:
+    - title: Twitter
+      url: https://twitter.com/stevehuckle
+      icon:
