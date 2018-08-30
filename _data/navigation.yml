@@ -2,6 +2,26 @@
 
 - title: Home
   url: https://glowkeeper.github.io/
+- title: Apps
+  url: https://glowkeeper.github.io/posts/apps/
+- title: Books
+  url: https://glowkeeper.github.io/posts/books/
+- title: Flash Fiction
+  url: https://glowkeeper.github.io/posts/flashFiction/
+- title: HowTos
+  url: https://glowkeeper.github.io/posts/howTos/
+- title: Miscellaneous
+  url: https://glowkeeper.github.io/posts/misc/
+- title: MSc Stuff
+  url: https://glowkeeper.github.io/posts/mSc/
+- title: PhD Stuff
+  url: https://glowkeeper.github.io/posts/phDOutputs/
+- title: Poetry
+  url: https://glowkeeper.github.io/posts/poetry/
+- title: Songs
+  url: https://glowkeeper.github.io/posts/songs/
+- title: Stories
+  url: https://glowkeeper.github.io/posts/stories/
 # - title: Posts
 #   url: /posts/
 # - title: Categories
