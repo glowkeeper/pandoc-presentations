@@ -7,6 +7,10 @@ sitemap: false
 
 @import "so-simple";
 
+.layout--home .page-wrapper {
+  max-width: $main-sidebar-max-width;
+}
+
 .layout--home .page-title {
   text-align: left;
 }
