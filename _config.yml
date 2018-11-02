@@ -17,7 +17,7 @@ theme: jekyll-theme-so-simple
 # remote_theme: mmistakes/so-simple-theme
 locale: en-GB
 title: "Absolutely, But"
-description: "Books, Stories, Papers, Essays, Poetry, Songs, Apps by Steven Huckle"
+description: "Academia, Apps, Books, Miscellaneous Musings, Poetry, Songs and Stories by Steven Huckle"
 baseurl: "/"
 url: "https://glowkeeper.github.io"
 logo: # path of site logo, e.g. "/images/logo.png"
