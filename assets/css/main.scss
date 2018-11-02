@@ -6,3 +6,7 @@ sitemap: false
 @charset "utf-8";
 
 @import "so-simple";
+
+.layout--home .page-title {
+  text-align: left;
+}
