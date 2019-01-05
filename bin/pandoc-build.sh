@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # e.g
-# pandoc-build.sh source.md paper 
-# 
+# pandoc-build.sh source.md paper
+#
 # All being well, the above command will output
 # ../build/paper/source.pdf
 
 # or
-# pandoc-build.sh source.md presentation 
-# 
+# pandoc-build.sh source.md presentation
+#
 # All being well, the above command will output
 # ../build/presentation/index.html
 # and put reveal.js in ./build/presentation/
@@ -49,7 +49,7 @@ function install_paper {
 	target_dir="${this_dir}/build/paper/${target_name}"
 	target_paper="${target_dir}/${target_name}.docx"
 
-	
+
 	if [ ! -f "${src_biblio}" ]
 	then
 		echo "error: the source bibliography ${src_dir}/${src_biblio} does not exist!"
@@ -66,7 +66,7 @@ function install_paper {
 	then
 		echo "error: the source meta ${src_dir}/${src_meta} does not exist!"
 		exit 1
-	fi	
+	fi
 
 	if [ ! -d "${target_dir}" ]
     then
@@ -128,11 +128,11 @@ then
 	exit 1
 fi
 
-if [ -z "`which xelatex`" ]
-then
-	echo "error: you must install LaTeX (or BasicTeX)!"
-	exit 1
-fi
+#if [ -z "`which xelatex`" ]
+#then
+#	echo "error: you must install LaTeX (or BasicTeX)!"
+#	exit 1
+#fi
 
 src_md="$1"
 action="$2"
@@ -159,12 +159,12 @@ case "$action" in
 			install_precheck
             install_presentation
             ;;
-         
+
         paper)
 			install_precheck
             install_paper
-            ;;         
+            ;;
         *)
             echo "usage: $0 {presentation||paper}"
-			exit 1 
+			exit 1
 esac

@@ -16,8 +16,8 @@ Ensure the following dependencies are met.
 
 You'll need the following software:
 
-+ [pandoc](https://github.com/jgm/pandoc/releases/download/1.17.0.2/pandoc-1.17.0.2-osx.pkg "pandoc")
-+ A LaTex processor. The [BasicTex](http://tug.org/cgi-bin/mactex-download/BasicTeX.pkg "BasicTex") package will suffice
++ [pandoc](https://pandoc.org)
++ A LaTex processor. The [TextLive](https://www.tug.org/texlive/) package is a good option
 
 ### PDF Dependencies
 
