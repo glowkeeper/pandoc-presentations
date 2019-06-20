@@ -17,7 +17,7 @@ function install_precheck {
 
 	for FILE in `echo "${src_md}"`
  	do
-		echo $FILE
+		#echo $FILE
 		#target_name="`basename ${FILE} | sed 's/\(.*\)\..*/\1/'`"
 		src_dir="`dirname ${FILE}`"
 
