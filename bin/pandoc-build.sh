@@ -15,40 +15,46 @@
 
 function install_precheck {
 
-	if [ ! -f "${src_md}" ]
-	then
-		echo "error: the source markdown (${src_md}) does not exist!"
-		exit 1
-	fi
+	for FILE in `echo "${src_md}"`
+ 	do
+		echo $FILE
+		#target_name="`basename ${FILE} | sed 's/\(.*\)\..*/\1/'`"
+		src_dir="`dirname ${FILE}`"
 
-	#If the markdown has image refeences, check for the actual images
-	if [ -n "`grep '(images/' ${src_md}`" ]
-	then
-		if [ ! -d "${src_dir}/${src_images}" ]
+		if [ ! -f "${FILE}" ]
 		then
-			echo "error: the image directory ${src_dir}/${src_images} does not exist!"
-			exit 1
-		elif [ -z "`ls ${src_dir}/${src_images}`" ]
-		then
-			echo "error: there are no images!"
+			echo "error: the source markdown (${FILE}) does not exist!"
 			exit 1
 		fi
-	fi
+
+		#If the markdown has image references, check for the actual images
+		if [ -n "`grep '(images/' ${FILE}`" ]
+		then
+			if [ ! -d "${src_dir}/${src_images}" ]
+			then
+				echo "error: the image directory ${src_dir}/${src_images} does not exist!"
+				exit 1
+			elif [ -z "`ls ${src_dir}/${src_images}`" ]
+			then
+				echo "error: there are no images!"
+				exit 1
+			fi
+		fi
+	done
 
 	# Change directory to the markdown source directory so the image references in the source resolve correctly
 	cd ${src_dir}
-	src_md=$(basename ${src_md})
 }
 
 function install_paper {
 
+	#echo "Source dir is ${src_dir}"
 	src_meta="meta.txt"
 	src_biblio="bibliography/library.bib"
 	src_csl="bibliography/ieee-with-url.csl"
 
 	target_dir="${this_dir}/build/paper/${target_name}"
 	target_paper="${target_dir}/${target_name}.docx"
-
 
 	if [ ! -f "${src_biblio}" ]
 	then
@@ -73,7 +79,9 @@ function install_paper {
 		mkdir -p "${target_dir}"
 	fi
 
-	pandoc --normalize --toc --metadata link-citations=true --filter pandoc-citeproc -V documentclass=report "${src_meta}" "${src_md}" --biblio "${src_biblio}" --csl "${src_csl}" --latex-engine=xelatex -s -S -o "${target_paper}"
+	#pandoc --normalize --toc --metadata link-citations=true --filter pandoc-citeproc -V documentclass=report "${src_meta}" "${src_md}" --biblio "${src_biblio}" --csl "${src_csl}" --latex-engine=xelatex -s -S -o "${target_paper}"
+	#echo "pandoc --metadata link-citations=true --filter pandoc-citeproc -V documentclass=report ${src_meta} --biblio ${src_biblio} --csl ${src_csl} --pdf-engine=xelatex -s -o ${target_paper}"
+	pandoc --metadata link-citations=true --filter pandoc-citeproc -V documentclass=report ${src_meta} ${src_md} --biblio ${src_biblio} --csl ${src_csl} --pdf-engine=xelatex -s -o ${target_paper}
 }
 
 function install_presentation {
@@ -93,7 +101,6 @@ function install_presentation {
 	theme="white"
 	transition="linear"
 
-
 	if [ ! -f "${src_css}" ]
 	then
 		echo "error: the source css ${src_css} does not exist!"
@@ -111,7 +118,8 @@ function install_presentation {
 		mkdir -p "${target_dir}"
 	fi
 
-	pandoc -s -S --section-divs --variable theme="$theme" --variable transition="$transition" -t revealjs -H "${src_css}" "${src_md}" -o "${target_html}"
+	#pandoc -s -S --section-divs --variable theme="$theme" --variable transition="$transition" -t revealjs -H "${src_css}" "${src_md}" -o "${target_html}"
+	pandoc -s --section-divs --variable theme=$theme --variable transition=$transition -t revealjs -H ${src_css} ${src_md} -o ${target_html}
 
 	# Now place images and reveal
 	cp -fRp "${src_images}" "${target_dir}"
@@ -134,37 +142,47 @@ fi
 #	exit 1
 #fi
 
-src_md="$1"
-action="$2"
+target_name=$1
+action=$2
+shift 2
+src_md=$@
 
-if [ -z "$src_md" ]
+#echo $target_name
+#echo $action
+#echo $src_md
+
+if [ -z "$target_name" ]
 then
-	echo "usage: $0 {presentation||paper}"
+	echo "usage: $0 outputName {presentation||paper} input"
 	exit 1
 fi
 
 if [ -z "$action" ]
 then
-	echo "usage: $0 {presentation||paper}"
+	echo "usage: $0 outputName {presentation||paper} input"
+	exit 1
+fi
+
+if [ -z "$src_md" ]
+then
+	echo "usage: $0 outputName {presentation||paper} input"
 	exit 1
 fi
 
 this_dir="`dirname $(pwd)`"
-target_name="`basename ${src_md} | sed 's/\(.*\)\..*/\1/'`"
-src_dir="`dirname ${src_md}`"
+src_dir=""
 src_images="images"
 
 case "$action" in
-        presentation)
-			install_precheck
-            install_presentation
-            ;;
-
-        paper)
-			install_precheck
-            install_paper
-            ;;
-        *)
-            echo "usage: $0 {presentation||paper}"
-			exit 1
+  presentation)
+		install_precheck
+    install_presentation
+    ;;
+  paper)
+		install_precheck
+    install_paper
+    ;;
+  *)
+    echo "usage: $0 outputName {presentation||paper} input"
+		exit 1
 esac
