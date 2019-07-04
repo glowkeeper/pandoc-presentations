@@ -80,8 +80,8 @@ function install_paper {
 	fi
 
 	#pandoc --normalize --toc --metadata link-citations=true --filter pandoc-citeproc -V documentclass=report "${src_meta}" "${src_md}" --biblio "${src_biblio}" --csl "${src_csl}" --latex-engine=xelatex -s -S -o "${target_paper}"
-	#echo "pandoc --metadata link-citations=true --filter pandoc-citeproc -V documentclass=report ${src_meta} --biblio ${src_biblio} --csl ${src_csl} --pdf-engine=xelatex -s -o ${target_paper}"
-	pandoc --metadata link-citations=true --filter pandoc-citeproc -V documentclass=report ${src_meta} ${src_md} --biblio ${src_biblio} --csl ${src_csl} --pdf-engine=xelatex -s -o ${target_paper}
+	#echo "pandoc --metadata link-citations=true --filter pandoc-citeproc -V documentclass=report ${src_meta} --biblio ${src_biblio} --csl ${src_csl} --latex-engine=xelatex -s -o ${target_paper}"
+	pandoc --metadata link-citations=true --filter pandoc-citeproc -V documentclass=report ${src_meta} ${src_md} --biblio ${src_biblio} --csl ${src_csl} --latex-engine=xelatex -s -o ${target_paper}
 }
 
 function install_presentation {
