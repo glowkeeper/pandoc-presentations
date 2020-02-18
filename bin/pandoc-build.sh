@@ -40,6 +40,20 @@ function install_precheck {
 				exit 1
 			fi
 		fi
+
+		#If the markdown has video references, check for the actual images
+		if [ -n "`grep '(videos/' ${FILE}`" ]
+		then
+			if [ ! -d "${src_dir}/${src_videos}" ]
+			then
+				echo "error: the video directory ${src_dir}/${src_videos} does not exist!"
+				exit 1
+			elif [ -z "`ls ${src_dir}/${src_videos}`" ]
+			then
+				echo "error: there are no videos!"
+				exit 1
+			fi
+		fi
 	done
 
 	# Change directory to the markdown source directory so the image references in the source resolve correctly
@@ -49,7 +63,7 @@ function install_precheck {
 function install_paper {
 
 	#echo "Source dir is ${src_dir}"
-	src_meta="meta.txt"
+	src_meta="meta.yml"
 	src_biblio="bibliography/library.bib"
 	src_csl="bibliography/ieee-with-url.csl"
 
@@ -79,13 +93,15 @@ function install_paper {
 		mkdir -p "${target_dir}"
 	fi
 
-	#pandoc --normalize --toc --metadata link-citations=true --filter pandoc-citeproc -V documentclass=report "${src_meta}" "${src_md}" --biblio "${src_biblio}" --csl "${src_csl}" --latex-engine=xelatex -s -S -o "${target_paper}"
+	#pandoc --normalize --toc --metadata link-citations=true --filter pandoc-citeproc -V documentclass=report "${src_meta}" "${src_md}" --biblio "${src_biblio}" --csl "${src_csl}" --pdf-engine=xelatex -s -S -o "${target_paper}"
 	#echo "pandoc --metadata link-citations=true --filter pandoc-citeproc -V documentclass=report ${src_meta} --biblio ${src_biblio} --csl ${src_csl} --latex-engine=xelatex -s -o ${target_paper}"
-	pandoc --metadata link-citations=true --filter pandoc-citeproc -V documentclass=report ${src_meta} ${src_md} --biblio ${src_biblio} --csl ${src_csl} --latex-engine=xelatex -s -o ${target_paper}
+	#pandoc --metadata-file=${src_meta} link-citations=true --filter pandoc-citeproc -V documentclass=report ${src_meta} ${src_md} --biblio ${src_biblio} --csl ${src_csl} --pdf-engine=xelatex -s -o ${target_paper}
+	pandoc link-citations=true --filter pandoc-citeproc -V documentclass=report ${src_meta} ${src_md} --biblio ${src_biblio} --csl ${src_csl} --pdf-engine=xelatex -s -o ${target_paper}
 }
 
 function install_presentation {
 
+	src_meta="meta.yml"
 	src_css="${target_name}.css"
 	src_reveal="${this_dir}/library/reveal.js"
 
@@ -100,6 +116,12 @@ function install_presentation {
 	# Black, White, Night, Solarized
 	theme="white"
 	transition="linear"
+
+	if [ ! -f "${src_meta}" ]
+	then
+		echo "error: the source meta ${src_meta} does not exist!"
+		exit 1
+	fi
 
 	if [ ! -f "${src_css}" ]
 	then
@@ -119,10 +141,18 @@ function install_presentation {
 	fi
 
 	#pandoc -s -S --section-divs --variable theme="$theme" --variable transition="$transition" -t revealjs -H "${src_css}" "${src_md}" -o "${target_html}"
-	pandoc -s --section-divs --variable theme=$theme --variable transition=$transition -t revealjs -H ${src_css} ${src_md} -o ${target_html}
+	#pandoc --metadata-file=${src_meta} --section-divs --variable theme=$theme --variable transition=$transition -t revealjs -H ${src_css} ${src_md} -o ${target_html}
+	pandoc --section-divs --variable theme=$theme --variable transition=$transition -t revealjs -H ${src_css} ${src_md} -o ${target_html}
 
-	# Now place images and reveal
-	cp -fRp "${src_images}" "${target_dir}"
+	# Now place images, videos and reveal
+	if [ -d "${src_images}" ]
+	then
+		cp -fRp "${src_images}" "${target_dir}"
+	fi
+	if [ -d "${src_videos}" ]
+	then
+		cp -fRp "${src_videos}" "${target_dir}"
+	fi
 	if [ ! -d "${target_reveal}" ]
 	then
 		cp -fRp "${src_reveal}" "${target_reveal}"
@@ -172,6 +202,7 @@ fi
 this_dir="`dirname $(pwd)`"
 src_dir=""
 src_images="images"
+src_videos="videos"
 
 case "$action" in
   presentation)
